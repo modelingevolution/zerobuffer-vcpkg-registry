@@ -7,6 +7,8 @@ vcpkg_cmake_configure(
         -DBUILD_TESTS=OFF
         -DBUILD_EXAMPLES=OFF
         -DBUILD_BENCHMARKS=OFF
+        -DBoost_NO_BOOST_CMAKE=ON
+        -DBOOST_ROOT=/usr
 )
 
 vcpkg_cmake_install()
