@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO modelingevolution/streamer
     REF ff64e3286b5fdfb5f9501e26b1b95b3cf4f2f973
-    SHA512 0
+    SHA512 1 # Will be updated by vcpkg on first run
     HEAD_REF master
 )
 
@@ -14,7 +14,7 @@ vcpkg_cmake_configure(
 )
 
 vcpkg_cmake_install()
-vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/ZeroBuffer)
+vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/zerobuffer)
 
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 
