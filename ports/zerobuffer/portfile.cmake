@@ -1,10 +1,5 @@
-vcpkg_from_github(
-    OUT_SOURCE_PATH SOURCE_PATH
-    REPO modelingevolution/zerobuffer
-    REF v${VERSION}
-    SHA512 0  # This will need to be updated when creating a release
-    HEAD_REF master
-)
+# Use local source for testing
+set(SOURCE_PATH "/mnt/d/source/modelingevolution/streamer/src/zerobuffer")
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}/cpp"
