@@ -1,18 +1,12 @@
-# Use local source for testing
-set(SOURCE_PATH "/mnt/d/source/modelingevolution/streamer/src/zerobuffer")
+# Use minimal test library
+set(SOURCE_PATH "/mnt/d/source/modelingevolution/streamer/src/zerobuffer/minimal-lib")
 
 vcpkg_cmake_configure(
-    SOURCE_PATH "${SOURCE_PATH}/cpp"
-    OPTIONS
-        -DBUILD_TESTS=OFF
-        -DBUILD_EXAMPLES=OFF
-        -DBUILD_BENCHMARKS=OFF
-        -DBoost_NO_BOOST_CMAKE=ON
-        -DBOOST_ROOT=/usr
+    SOURCE_PATH "${SOURCE_PATH}"
 )
 
 vcpkg_cmake_install()
-vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/zerobuffer)
+vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/zerobuffer-minimal)
 
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 
