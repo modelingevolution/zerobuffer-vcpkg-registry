@@ -1,16 +1,17 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO modelingevolution/streamer
-    REF ff64e3286b5fdfb5f9501e26b1b95b3cf4f2f973
-    SHA512 1 # Will be updated by vcpkg on first run
+    REPO modelingevolution/zerobuffer
+    REF v${VERSION}
+    SHA512 0  # This will need to be updated when creating a release
     HEAD_REF master
 )
 
-# The zerobuffer C++ code is in a subdirectory
-set(SOURCE_PATH "${SOURCE_PATH}/src/zerobuffer/cpp")
-
 vcpkg_cmake_configure(
-    SOURCE_PATH "${SOURCE_PATH}"
+    SOURCE_PATH "${SOURCE_PATH}/cpp"
+    OPTIONS
+        -DBUILD_TESTS=OFF
+        -DBUILD_EXAMPLES=OFF
+        -DBUILD_BENCHMARKS=OFF
 )
 
 vcpkg_cmake_install()
@@ -18,5 +19,4 @@ vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/zerobuffer)
 
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 
-# ZeroBuffer doesn't have a LICENSE file in the repo yet
-file(WRITE "${CURRENT_PACKAGES_DIR}/share/${PORT}/copyright" "Copyright (c) 2024 ModelingEvolution\n\nMIT License")
+vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/LICENSE")
